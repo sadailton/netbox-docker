@@ -21,8 +21,8 @@ services:
   netbox-worker:
     <<: *netbox
     depends_on:
-      netbox:
-        condition: service_healthy
+      - netbox
+        #condition: service_healthy
     command:
     - /opt/netbox/venv/bin/python
     - /opt/netbox/netbox/manage.py
@@ -35,8 +35,8 @@ services:
   netbox-housekeeping:
     <<: *netbox
     depends_on:
-      netbox:
-        condition: service_healthy
+      - netbox
+        #condition: service_healthy
     command:
     - /opt/netbox/housekeeping.sh
     healthcheck:
